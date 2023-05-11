@@ -1,5 +1,6 @@
 package com.example.intensivao.services;
 
+import com.example.intensivao.dto.GameDTO;
 import com.example.intensivao.dto.GameMinDTO;
 import com.example.intensivao.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,10 @@ import java.util.List;
 public class GameService {
         @Autowired
         private GameRepository gameRepository;
+        public GameDTO findById(Long id) {
+            Game result = gameRepository.findById(id).get();
+            return new GameDTO(result);
+        }
         public List<GameMinDTO> findAll() {
             List<Game> result = gameRepository.findAll();
             List<GameMinDTO> dto = result.stream().map(x -> new GameMinDTO(x)).toList();
