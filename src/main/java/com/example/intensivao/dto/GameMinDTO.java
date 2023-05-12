@@ -1,6 +1,7 @@
 package com.example.intensivao.dto;
 
 import com.example.intensivao.entities.Game;
+import com.example.intensivao.projections.GameMinProjection;
 
 public class GameMinDTO {
     private Long id;
@@ -17,6 +18,14 @@ public class GameMinDTO {
         this.year = entity.getYear();
         this.imgUrl = entity.getImgUrl();
         this.shortDescription = entity.getShortDescription();
+    }
+
+    public GameMinDTO(GameMinProjection entity) {
+        id = entity.getId();
+        title = entity.getTitle();
+        year = entity.getYear();
+        imgUrl = entity.getImgUrl();
+        shortDescription = entity.getShortDescription();
     }
 
     public Long getId() {
